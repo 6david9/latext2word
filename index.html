@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <title>tex texample</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .input-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        textarea {
+            width: 400px;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+        #latex {
+            font-size: 44px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="input-container">
+        <textarea id="latex-input" placeholder="Enter LaTeX expression"></textarea>
+        <br>
+        <button onclick="generateLatex()">Generate</button>
+    </div>
+
+    <p id="latex">
+    </p>
+
+    <script>
+        function generateLatex() {
+            const input = document.getElementById('latex-input').value;
+            const latexElement = document.getElementById('latex');
+            latexElement.innerHTML = `$$ ${input} $$`;
+            
+            // Refresh MathJax to render the new content
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, latexElement]);
+        }
+    </script>
+</body>
+</html>
